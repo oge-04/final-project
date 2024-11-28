@@ -24,7 +24,6 @@
   
       
  <main>
-     <!-- Start DEMO HTML (Use the following code into your project)-->
  <div class="container">
   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#cartModal">
     View Cart
@@ -57,7 +56,7 @@
           <tbody>
             <tr>
               <td class="w-25">
-                <img src="vans.png" class="img-fluid img-thumbnail" alt="Sheep">
+                <img src="https://th.bing.com/th/id/R.f2cf52c0868ef93de2c02da1b43d5436?rik=szfggGRqvO2wrw&riu=http%3a%2f%2fc.shld.net%2frpx%2fi%2fs%2fi%2fspin%2f-122%2fprod_1481632512%3f%3fhei%3d64%26wid%3d64%26qlt%3d50&ehk=9FLs1MZGfK%2fjU5SUES6psSsnVJkzfZCU8ipYms9A1i0%3d&risl=&pid=ImgRaw&r=0" class="img-fluid img-thumbnail" alt="Sheep">
               </td>
               <td>Vans Sk8-Hi MTE Shoes</td>
               <td>89$</td>
@@ -76,91 +75,75 @@
         </div>
 
 
-        Payment Methods
-
-        <div class="container">
-          <div class="price">
-          
-          </div>
-          <div class="card__container">
-              <div class="card">
+        <div class="wrapper">
+          <div class="container">
+              <form action="">
+                  <h1>
+                      <i class="fas fa-shipping-fast"></i>
+                      Shipping Details
+                  </h1>
+                  <div class="name">
+                      <div>
+                          <label for="f-name">First</label>
+                          <input type="text" name="f-name">
+                      </div>
+                      <div>
+                          <label for="l-name">Last</label>
+                          <input type="text" name="l-name">
+                      </div>
+                  </div>
+                  <div class="street">
+                      <label for="name">Street</label>
+                      <input type="text" name="address">
+                  </div>
+                  <div class="address-info">
+                      <div>
+                          <label for="city">City</label>
+                          <input type="text" name="city">
+                      </div>
+                      <div>
+                          <label for="state">State</label>
+                          <input type="text" name="state">
+                      </div>
+                      <div>
+                          <label for="zip">Zip</label>
+                          <input type="text" name="zip">
+                      </div>
+                  </div>
+                  <h1>
+                      <i class="far fa-credit-card"></i> Payment Information
+                  </h1>
+                  <div class="cc-num">
+                      <label for="card-num">Credit Card No.</label>
+                      <input type="text" name="card-num">
+                  </div>
+                  <div class="cc-info">
+                      <div>
+                          <label for="card-num">Exp</label>
+                          <input type="text" name="expire">
+                      </div>
+                      <div>
+                          <label for="card-num">CCV</label>
+                          <input type="text" name="security">
+                      </div>
+                  </div>
                   
-                     
-                      <div class="right">
-                          
-                      </div>
                   </div>
-                  <div class="row credit">
-                      <div class="left">
-                          
-                          <label for="cd">Debit/ Credit Card</label>
-                      </div>
-                      <div class="right">
-                          
-                      </div>
-                  </div>
-                  <div class="row cardholder">
-                      <div class="info">
-                          <label for="cardholdername">Name</label>
-                          <input placeholder="e.g. Richard Bovell" id="cardholdername" type="text" />
-                      </div>
-                  </div>
-                  <div class="row number">
-                      <div class="info">
-                          <label for="cardnumber">Card number</label>
-                          <input id="cardnumber" type="text" pattern="[0-9]{16,19}" maxlength="19" placeholder="8888-8888-8888-8888"/>
-                      </div>
-                  </div>
-                  <div class="row details">
-                      <div class="left">
-                          <label for="expiry-date">Expiry</label>
-                          <select id="expiry-date">
-                              <option>MM</option>
-                              <option value="1">01</option>
-                              <option value="2">02</option>
-                              <option value="3">03</option>
-                              <option value="4">04</option>
-                              <option value="5">05</option>
-                              <option value="6">06</option>
-                              <option value="7">07</option>
-                              <option value="8">08</option>
-                              <option value="9">10</option>
-                              <option value="11">11</option>
-                              <option value="12">12</option>
-                          </select>
-                          <span>/</span>
-                           <select id="expiry-date">
-                              <option>YYYY</option>
-                              <option value="2016">2016</option>
-                              <option value="2017">2017</option>
-                              <option value="2018">2018</option>
-                              <option value="2019">2019</option>
-                              <option value="2020">2020</option>
-                              <option value="2021">2021</option>
-                              <option value="2022">2022</option>
-                              <option value="2023">2023</option>
-                              <option value="2024">2024</option>
-                              <option value="2025">2025</option>
-                              <option value="2026">2026</option>
-                              <option value="2027">2027</option>
-                              <option value="2028">2028</option>
-                              <option value="2029">2029</option>
-                              <option value="2030">2030</option>
-                          </select>
-                      </div>
-                      <div class="right">
-                          <label for="cvv">CVC/CVV</label>
-                          <input type="text" maxlength="4" placeholder="123"/>
-                          <span data-balloon-length="medium" data-balloon="The 3 or 4-digit number on the back of your card." data-balloon-pos="up">i</span>
-                      </div>
-                  </div>
-              </div>
+              </form>
           </div>
+      </div>
+  
           <div class="button">
-            <button onclick="location.href='checkout.html'">Confirm and Pay</button>
+            <button onclick="location.href='checkout.html'" style='width:100px;margin:0 50%;position:relative;left:-50px;'>Confirm and Pay</button>
           </div>
+          <br>
       </div>
       </div>
+
+      
+
+
+
       <div class="modal-footer border-top-0 d-flex justify-content-between">
         
         
@@ -169,9 +152,7 @@
   </div>
 </div>
 
-<!-- partial -->
-   
-     <!-- END EDMO HTML (Happy Coding!)-->
+
  </main>
 
 
