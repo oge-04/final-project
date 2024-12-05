@@ -1,3 +1,4 @@
+console.log("sdjkhgkihg");
 function login() {
     let email = "admin@admin.com";
     let password = "admin123";
