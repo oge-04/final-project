@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Product
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
@@ -9,12 +9,13 @@ def user_login(request):
     return render(request,'login.html')
 
 def user_logout(request):
-    return render(request,'logout.html')
+    logout(request)
+    return redirect(request,'login.html')
 
 def products(request):
     products = Product.objects.all()
-    if request.method == "POST":
-        search = request.POST['search']
+    #if request.method == "POST":
+     #   search = request.POST['search']
 
 
     return render(request,'products.html', {'products':products})

@@ -10,7 +10,7 @@
 
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
   <div class="form-signin w-100 m-auto">
-    <form id="form" method="post">
+    <form id="form" method="post" action="{% url 'products' %}">
       {% csrf_token %}
       {{ form }}
       <h1> Login </h1>
