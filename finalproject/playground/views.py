@@ -14,8 +14,18 @@ def user_logout(request):
 
 def products(request):
     products = Product.objects.all()
-    #if request.method == "POST":
-     #   search = request.POST['search']
+    if request.method == "POST":
+        searchInput = request.POST.get('search')
+        categoryInput = request.POST.get('categoryInput')
+        sortInput = request.POST.get('sortInput')
+        
+        if searchInput:
+            products = Product.objects.filter(name__contains=searchInput)
+        if categoryInput:
+            products = Product.objects.filter(category=categoryInput)
+        if sortInput:
+            products = Product.objects.filter(sortInput)
+     
 
 
     return render(request,'products.html', {'products':products})
