@@ -24,7 +24,7 @@ def products(request):
         if categoryInput:
             products = Product.objects.filter(category=categoryInput)
         if sortInput:
-            products = Product.objects.filter(sortInput)
+            products = Product.objects.order_by('price')
      
 
 
