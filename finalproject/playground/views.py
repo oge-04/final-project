@@ -13,22 +13,24 @@ def user_logout(request):
     return redirect(request,'login.html')
 
 def products(request):
-    products = Product.objects.all()
     if request.method == "POST":
-        searchInput = request.POST.get('search')
+        searchInput = request.POST.get('searchInput')
         categoryInput = request.POST.get('categoryInput')
         sortInput = request.POST.get('sortInput')
-        
+        search_results = Product.objects.all()
         if searchInput:
-            products = Product.objects.filter(name__contains=searchInput)
+            search_results=search_results.filter(name__contains=searchInput)
         if categoryInput:
-            products = Product.objects.filter(category=categoryInput)
+            search_results=search_results.filter(category_id=categoryInput)
         if sortInput:
-            products = Product.objects.order_by('price')
-     
-
-
-    return render(request,'products.html', {'products':products})
+            if sortInput == "2":
+                search_results=search_results.order_by('-price')
+            elif sortInput == "1":
+                search_results=search_results.order_by('price')
+        return render(request,'products.html',{'products':search_results})
+    else:
+        products = Product.objects.all()
+        return render(request,'products.html',{'products':products})
 
 
 def cartpage(request):

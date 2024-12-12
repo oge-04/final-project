@@ -64,22 +64,22 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Filters</a>
         </li>
-        <form action="{% url 'products' %}" method="post" role="search" class="navbar-nav me-auto mb-2 mb-md-0">
+        <form action="{% url 'products' %}" method="post" role="search" name="searchInput" class="navbar-nav me-auto mb-2 mb-md-0">
           {% csrf_token %}
           <li class="nav-item">
             <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="searchInput">
           </li>
           <li class="nav-item">
             <select class="form-select btn btn-outline-light me-2 col-auto" aria-label="Default select example" name="categoryInput">
-              <option selected>Category</option>
+              <option selected disabled>Category</option>
               <option value="1">Hats</option>
               <option value="2">Pants</option>
-              <option value="2">Shirts</option>
+              <option value="3">Shirts</option>
             </select>
           </li>
           <li class="nav-item dropdown">
             <select class="form-select btn btn-outline-light me-2 col-auto" aria-label="Default select example" name="sortInput">
-              <option selected>Sort By</option>
+              <option selected disabled>Sort By</option>
               <option value="1">Price: Low to High</option>
               <option value="2">Price: High to Low</option>
             </select>
