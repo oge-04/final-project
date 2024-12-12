@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Product
+from .models import Product, Cart
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
@@ -27,14 +27,43 @@ def products(request):
                 search_results=search_results.order_by('-price')
             elif sortInput == "1":
                 search_results=search_results.order_by('price')
-        return render(request,'products.html',{'products':search_results})
+        cartItems = Cart.objects.all()
+        totalItems = sum(item.quantity for item in cartItems)
+        return render(request,'products.html',{'products':search_results, 'total_items': totalItems})
     else:
         products = Product.objects.all()
-        return render(request,'products.html',{'products':products})
+        cartItems = Cart.objects.all()
+        totalItems = sum(item.quantity for item in cartItems)
+        return render(request,'products.html',{'products':products, 'total_items': totalItems})
 
 
 def cartpage(request):
-    return render(request,'cartpage.html')
+    if request.method == "POST":
+        product_id = request.POST.get('product_id')
+        quantity = request.POST.get('quantity',0)
+        action = request.POST.get('action')
+
+        product = Product.objects.get(id=product_id)
+        if action == 'add':
+            cart, created  = Cart.objects.get_or_create(product=product, defaults={'quantity':quantity})
+
+            if not created:
+                cart.quantity += int(quantity)
+                cart.save()
+        elif action == 'delete':
+            Cart.objects.filter(product=product).delete()
+            
+        
+        cartItems = Cart.objects.all()
+        totalItems = sum(item.quantity for item in cartItems)
+        cartTotal = sum(item.totalPrice() for item in cartItems)
+        return render(request, 'cartpage.html', {'cartItems': cartItems, 'total_items': totalItems, 'cartTotal': cartTotal})
+    else:
+        cartItems = Cart.objects.all()
+        totalItems = sum(item.quantity for item in cartItems)
+        cartTotal = sum(item.totalPrice() for item in cartItems)
+        return render(request, 'cartpage.html', {'cartItems': cartItems, 'total_items': totalItems, 'cartTotal': cartTotal})
+        
 
 
 def checkout(request):

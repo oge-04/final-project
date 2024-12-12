@@ -16,3 +16,19 @@ class Product(models.Model):
     image = models.ImageField(upload_to='uploads/productImages')
     def __str__(self):
         return self.name
+    
+
+class Cart(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+    added = models.DateTimeField(auto_now_add=True)
+    total: float = 0
+    
+    def totalPrice(self):
+        return self.quantity * self.product.price
+
+
+    def __str__(self):
+        return self.product
+
+    
